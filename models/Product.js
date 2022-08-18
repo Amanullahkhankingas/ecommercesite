@@ -1,4 +1,4 @@
-const mongoose = required('mongoose')
+const mongoose = require('mongoose')
 
 const productSchema= new mongoose.Schema({
     title:{type:String, required:true},
@@ -11,5 +11,6 @@ const productSchema= new mongoose.Schema({
     category:{type:String, required:true},
     availableyQty:{type:Number, required:true}
 },{timestampts:true})
+mongoose.models = {}
 
 export default mongoose.model('Product',productSchema)
