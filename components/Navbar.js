@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRef } from 'react';
 import { AiOutlineShoppingCart, AiFillCloseCircle ,AiFillMinusCircle, AiFillPlusCircle} from 'react-icons/ai';
 import { BsFillBagCheckFill } from 'react-icons/bs';
+import { MdAccountCircle } from 'react-icons/md';
 
 
 
@@ -45,8 +46,10 @@ const Navbar = ({addToCart, removeFromCart, cart, totalamount, clearCart}) => {
             <Link href={'/stickers'}>< a className="hover:underline active:text-gray-500">Stickers</a></Link>
           </ul>
         </div>
-          <div className="cart text-2xl cursor-pointer absolute top-1 right-1 md:right-3 md:top-3 md:text-4xl">
-            <a onClick={handleSideCart}><AiOutlineShoppingCart/></a>
+          <div className="cart flex text-2xl cursor-pointer absolute top-1 right-1 md:right-3 md:top-3 md:text-4xl">
+          <Link href={"/login"}><MdAccountCircle/></Link>
+
+            <div className='ml-4' onClick={handleSideCart}><AiOutlineShoppingCart/></div>
           </div>
 
           {/* shoping card design */}                      
