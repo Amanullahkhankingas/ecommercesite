@@ -6,8 +6,8 @@ const connectDB = handler=> async (req, res)=>{
         return handler(req,res)
     }
 
-//    await  mongoose.connect("mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false")
-   await  mongoose.connect("mongodb://codeswear")
+   await  mongoose.connect("mongodb://localhost:27017/codeswear?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false")
+//    await  mongoose.connect("mongodb://codeswear")
 //    await  mongoose.connect(process.env.MONGO_DB)
 
     return handler(req,res)
