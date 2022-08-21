@@ -55,7 +55,7 @@ function MyApp({ Component, pageProps }) {
          newCart[productCode].qty= cart[productCode].qty +1; 
        }
        else{
-        newCart[productCode]={qty:1,name,price,variant};
+        newCart[productCode]={qty:1,name,price,size,variant};
        }
 
        saveCart(newCart)

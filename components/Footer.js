@@ -1,26 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 // import Link from 'next/link'
 
 const Footer = () => {
   return (
     <div>
-      BLOG
-CONTACT
-CONTENT
-CTA
-ECOMMERCE
-FEATURE
-FOOTER
-GALLERY
-HEADER
-HERO
-PRICING
-STATISTIC
-STEP
-TEAM
-TESTIMONIAL
-Copied!
+     
 
 <footer className="text-gray-600 body-font">
   <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
@@ -28,11 +14,30 @@ Copied!
       <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
      <Image src="/logo1.png" width={200} height={40} alt="logo"/>
       </a>
-      <p className=" mx-8 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
+      <p className=" mx-8 text-sm text-gray-500">
+        Wear the &lt;Code/&gt;</p>
+        <p className=" mx-8 text-sm text-gray-500">Primium coding tshirts, hoodies and apparals </p>
     </div>
     <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
       <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">SHOP</h2>
+        <nav className="list-none mb-10">
+          <li>
+            <Link href={"/tshirts"}><a className="text-gray-600 hover:text-gray-800 curser-pointer">Tshirts</a></Link>
+          </li>
+          <li>
+            <Link href={"/hoodies"}><a className="text-gray-600 hover:text-gray-800 curser-pointer">Hoodies</a></Link>
+          </li>
+          <li>
+            <Link href={"/mugs"}><a className="text-gray-600 hover:text-gray-800 curser-pointer">Mugs</a></Link>
+          </li>
+          <li>
+            <Link href={"/stickers"}><a className="text-gray-600 hover:text-gray-800 curser-pointer">Stickers</a></Link>
+          </li>
+        </nav>
+      </div>
+      <div className="lg:w-1/4 md:w-1/2 w-full px-4">
+        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">POLICY</h2>
         <nav className="list-none mb-10">
           <li>
             <a className="text-gray-600 hover:text-gray-800">First Link</a>
@@ -49,24 +54,7 @@ Copied!
         </nav>
       </div>
       <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
-        <nav className="list-none mb-10">
-          <li>
-            <a className="text-gray-600 hover:text-gray-800">First Link</a>
-          </li>
-          <li>
-            <a className="text-gray-600 hover:text-gray-800">Second Link</a>
-          </li>
-          <li>
-            <a className="text-gray-600 hover:text-gray-800">Third Link</a>
-          </li>
-          <li>
-            <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-          </li>
-        </nav>
-      </div>
-      <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">ABOUT</h2>
         <nav className="list-none mb-10">
           <li>
             <a className="text-gray-600 hover:text-gray-800">First Link</a>
@@ -103,7 +91,7 @@ Copied!
   </div>
   <div className="bg-gray-100">
     <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-      <p className="text-gray-500 text-sm text-center sm:text-left">© 2020 Tailblocks —
+      <p className="text-gray-500 text-sm text-center sm:text-left">© 2020 Codeswear.com — All Rights Reserved
         <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" className="text-gray-600 ml-1" target="_blank">@knyttneve</a>
       </p>
       <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">

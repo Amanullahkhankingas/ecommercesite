@@ -40,10 +40,10 @@ const Navbar = ({addToCart, removeFromCart, cart, totalamount, clearCart}) => {
         </div>
         <div className="nav flex text-sm md:text-xl my-1   ">
           <ul className='flex space-x-4 font-bold mx-auto  md:mx-0'>
-            <Link href={'/hoodies'}>< a className="hover:underline active:text-gray-500">Hoodies</a></Link>
-            <Link href={'/mugs'}>< a className="hover:underline active:text-gray-500">Mugs</a></Link>
-            <Link href={'/tshirts'}>< a className="hover:underline active:text-gray-500">T-Shirts</a></Link>
-            <Link href={'/stickers'}>< a className="hover:underline active:text-gray-500">Stickers</a></Link>
+            <Link href={'/tshirts'}>< a className="hover:underline active:text-gray-500 hover:text-pink-800">T-Shirts</a></Link>
+            <Link href={'/hoodies'}>< a className="hover:underline active:text-gray-500 hover:text-pink-800">Hoodies</a></Link>
+            <Link href={'/mugs'}>< a className="hover:underline active:text-gray-500 hover:text-pink-800">Mugs</a></Link>
+            <Link href={'/stickers'}>< a className="hover:underline active:text-gray-500 hover:text-pink-800">Stickers</a></Link>
           </ul>
         </div>
           <div className="cart flex text-2xl cursor-pointer absolute top-1 right-1 md:right-3 md:top-3 md:text-4xl">
@@ -62,7 +62,7 @@ const Navbar = ({addToCart, removeFromCart, cart, totalamount, clearCart}) => {
               {Object.keys(JSON.parse(JSON.stringify(cart))).map((itemkey)=>{
                return <li key={itemkey}>
                 <div className="item flex my-2">
-                <div className=' w-2/3 '>{itemkey}</div>
+                <div className=' w-2/3 '>{`${cart[itemkey].name}(${cart[itemkey].size}/${cart[itemkey].variant})`}</div>
                 <div className=' w-1/3 flex justify-center items-center text-xl'>
                  <AiFillMinusCircle className='text-pink-500 cursor-pointer' onClick={()=>{removeFromCart(itemkey,1,cart[itemkey].name,cart[itemkey].price,cart[itemkey].size,cart[itemkey].variant)}}/>
                   <span className='text-xl'>{cart[itemkey].qty}</span>
