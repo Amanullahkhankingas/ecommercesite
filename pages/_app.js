@@ -1,3 +1,4 @@
+import Router from 'next/router'
 import { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
@@ -61,6 +62,17 @@ function MyApp({ Component, pageProps }) {
        saveCart(newCart)
        setCart(newCart)
       }
+
+
+  const buyNow = (productCode,qty,name,price,size,variant)=>{
+   let newCart={};
+    newCart[productCode]={qty:1,name,price,size,variant}
+
+    saveCart(newCart)
+    setCart(newCart)
+
+    Router.push('http://localhost:3000/checkout')
+  }
       
   const removeFromCart = (productCode,qty,name,price,size,variant)=>{
         let newCart = cart;
@@ -86,7 +98,7 @@ function MyApp({ Component, pageProps }) {
 
   return<>
           <Navbar totalamount={totalamount} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart}/>
-        <Component  totalamount={totalamount} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} {...pageProps} />
+        <Component buyNow={buyNow} totalamount={totalamount} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} {...pageProps} />
           <Footer/>
         </>
 }

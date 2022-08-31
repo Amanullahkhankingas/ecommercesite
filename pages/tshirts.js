@@ -10,7 +10,7 @@ const Tshirts = ({ products }) => {
     <div>
       <section className="text-black-500 bg-white-900 body-font">
         <div className="container px-5 py-16 mx-auto">
-          <div className="flex flex-wrap -m-4">
+          <div className="flex flex-wrap m-4">
             {Object.keys(products).map((item) => {
               return <div key={products[item].title} className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg md:mx-3 ">  { /*start*/}
                 <Link href={`/product/${products[item]["slug"]}`}><a className="block  overflow-hidden">
