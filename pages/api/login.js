@@ -4,6 +4,9 @@ import connectDB from "../../middleware/mongoose"
 var CryptoJS = require("crypto-js");
 
 
+var jwt = require('jsonwebtoken');
+
+
 
 const handler= async (req, res)=> {
     
@@ -14,12 +17,15 @@ const handler= async (req, res)=> {
         // console.log(user.name)
 
         var bytes  = CryptoJS.AES.decrypt(user.password, 'secretkey123');
-        var decriptText = bytes.toString(CryptoJS.enc.Utf8);
+        var decriptedPass = bytes.toString(CryptoJS.enc.Utf8);
 
         if(user){
-              if(req.body.email == user.email && req.body.password == decriptText){
-
-                  res.status(200).json({Success :true, message:"Your account is LogedIn Successfully!", name:user.name ,email:user.email})
+              if(req.body.email == user.email && req.body.password == decriptedPass){
+                
+                var token = jwt.sign({ name:user.name ,email:user.email}, 'jsonwebtoken');
+                            //  console.log(token)
+                  res.status(200).json({Success :true, message:"Your account is LogedIn Successfully!",token:token})
+                  
                 }
                 else{
                     

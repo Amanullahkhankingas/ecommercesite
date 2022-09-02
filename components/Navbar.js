@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+
 // import { FaBeer } from 'react-icons/fa';
 import Image from 'next/image'
 import Link from 'next/link'
@@ -9,7 +10,11 @@ import { MdAccountCircle } from 'react-icons/md';
 
 
 
-const Navbar = ({addToCart, removeFromCart, cart, totalamount, clearCart}) => {
+const Navbar = ({addToCart, removeFromCart, cart, totalamount, clearCart, user, logout}) => {
+  console.log(user)
+
+  
+  const [dropDown,setDropDown] =useState(false)
 
   const ref = useRef()
   // console.log(cart.this.qty)
@@ -47,7 +52,19 @@ const Navbar = ({addToCart, removeFromCart, cart, totalamount, clearCart}) => {
           </ul>
         </div>
           <div className="cart flex text-2xl cursor-pointer absolute top-1 right-1 md:right-3 md:top-3 md:text-4xl">
-          <Link href={"/login"}><a><MdAccountCircle/></a></Link>
+
+          <a onMouseOver={()=>{setDropDown(true)}} onMouseLeave={()=>{setDropDown(false)}}>
+            {dropDown && <div onMouseOver={()=>{setDropDown(true)}} onMouseLeave={()=>{setDropDown(false)}} className='absolute right-14 bg-pink-300 top-9 py-4 rounded-md px-5 w-32 text-white'>
+              <ul>
+                <Link href={'/myaccount'}><a><li className='py-1 hover:text-pink-700 text-sm'>My Account</li></a></Link>
+                <Link href={'/orders'}><a><li className='py-1 hover:text-pink-700 text-sm'>Order</li></a></Link>
+                <li onClick={logout} className='py-1 hover:text-pink-700 text-sm'>Logout</li>
+              </ul>
+            </div>}
+            {user.value && <MdAccountCircle/>}
+          </a>
+
+          {!user.value &&  <Link href={"/login"}><a><button className='bg-pink-600 px-2 py-1 rounded-md text-white text-sm'>logedIn</button></a></Link>}
 
             <div className='ml-4' onClick={handleSideCart}><AiOutlineShoppingCart/></div>
           </div>

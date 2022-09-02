@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useRouter} from 'next/router';
 
+
 const Login = () => {
 
   const [email, setEmail] = useState()
@@ -31,7 +32,8 @@ const Login = () => {
     setEmail('')
     setPassword('')
     if(res.Success){
-      
+      localStorage.setItem('token',res.token)
+
       toast.success(res.message, {
         position: "bottom-left",
         autoClose: 1000,

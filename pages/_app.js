@@ -1,12 +1,21 @@
-import Router from 'next/router'
+import {useRouter} from 'next/router'
 import { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
+
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
+  let Router = useRouter()
      const [cart,setCart] =useState({})
      const [totalamount,setTotalamount] =useState(0)
+
+    //  const [user,setUser] =useState({value:null})
+     const [user,setUser] =useState({})
+     const [key,setKey] =useState()
+     const [dropDown,setDropDown] =useState(false)
+
+
 
 
      useEffect(()=>{
@@ -16,22 +25,31 @@ function MyApp({ Component, pageProps }) {
           setCart(JSON.parse(localStorage.getItem('cart')))
           // saveCart(JSON.parse(localStorage.getItem('cart')))
           
-          console.log("use effect is cart")
+          // console.log("use effect is cart")
           
         }
         if(localStorage.getItem('amount')){
   
           
           setTotalamount(JSON.parse(localStorage.getItem('amount')))
-          console.log("use effect amount")
+          // console.log("use effect amount")
+
+          
           
         }
+        let token = localStorage.getItem('token')
+        if(token){
+          setUser({value:token})
+          setKey(Math.random())
+        }
+
+       
       } catch (error) {
         console.error(error)
         localStorage.clear()
         
       }
-    },[])
+    },[Router.query])
 
   const saveCart=(SavingCartInLocalStorage)=>{
     localStorage.setItem("cart",JSON.stringify(SavingCartInLocalStorage))
@@ -96,8 +114,14 @@ function MyApp({ Component, pageProps }) {
 
       
 
+      const logout =()=>{
+        localStorage.removeItem('token')
+        setUser({value: null})
+        setKey(Math.random())
+      }
+
   return<>
-          <Navbar totalamount={totalamount} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart}/>
+          <Navbar logout={logout}  user={user} key={key} totalamount={totalamount} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart}/>
         <Component buyNow={buyNow} totalamount={totalamount} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} {...pageProps} />
           <Footer/>
         </>
