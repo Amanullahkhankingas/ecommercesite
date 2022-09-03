@@ -8,7 +8,7 @@ import LoadingBar from 'react-top-loading-bar'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
-  let Router = useRouter()
+  let router = useRouter()
      const [cart,setCart] =useState({})
      const [totalamount,setTotalamount] =useState(0)
      
@@ -24,10 +24,10 @@ function MyApp({ Component, pageProps }) {
 
      useEffect(()=>{
       try {
-        Router.events.on('routeChangeStart', ()=>{
+        router.events.on('routeChangeStart', ()=>{
           setProgress(40)
         })
-        Router.events.on('routeChangeComplete', ()=>{
+        router.events.on('routeChangeComplete', ()=>{
           setProgress(100)
         })
         if(localStorage.getItem('cart')){
@@ -59,7 +59,7 @@ function MyApp({ Component, pageProps }) {
         localStorage.clear()
         
       }
-    },[Router.query])
+    },[router.query])
 
   const saveCart=(SavingCartInLocalStorage)=>{
     localStorage.setItem("cart",JSON.stringify(SavingCartInLocalStorage))
@@ -99,7 +99,7 @@ function MyApp({ Component, pageProps }) {
     saveCart(newCart)
     setCart(newCart)
 
-    Router.push('http://localhost:3000/checkout')
+    router.push('http://localhost:3000/checkout')
   }
       
   const removeFromCart = (productCode,qty,name,price,size,variant)=>{
@@ -128,12 +128,13 @@ function MyApp({ Component, pageProps }) {
         localStorage.removeItem('token')
         setUser({value: null})
         setKey(Math.random())
+        router.push('/')
       }
 
   return<>
         <Navbar logout={logout}  user={user} key={key} totalamount={totalamount} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart}/>
    <LoadingBar
-        color='#f11946'
+        color='gray'
         progress={progress}
         onLoaderFinished={() => setProgress(0)}
       />

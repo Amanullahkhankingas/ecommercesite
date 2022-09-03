@@ -54,7 +54,7 @@ const Navbar = ({addToCart, removeFromCart, cart, totalamount, clearCart, user, 
           <div className="cart flex text-2xl cursor-pointer absolute top-1 right-1 md:right-3 md:top-3 md:text-4xl">
 
           <a onMouseOver={()=>{setDropDown(true)}} onMouseLeave={()=>{setDropDown(false)}}>
-            {dropDown && <div onMouseOver={()=>{setDropDown(true)}} onMouseLeave={()=>{setDropDown(false)}} className='absolute right-14 bg-pink-300 top-9 py-4 rounded-md px-5 w-32 text-white'>
+            {dropDown && <div onMouseOver={()=>{setDropDown(true)}} onMouseLeave={()=>{setDropDown(false)}} className='absolute right-14 bg-gray-100 border top-9 py-4 rounded-md px-5 w-32 text-black'>
               <ul>
                 <Link href={'/myaccount'}><a><li className='py-1 hover:text-pink-700 text-sm'>My Account</li></a></Link>
                 <Link href={'/orders'}><a><li className='py-1 hover:text-pink-700 text-sm'>Order</li></a></Link>
@@ -70,7 +70,7 @@ const Navbar = ({addToCart, removeFromCart, cart, totalamount, clearCart, user, 
           </div>
 
           {/* shoping card design */}                      
-          <div ref={ref} className='sideCart  h-full w-72 overflow-y-scroll absolute top-0 right-0 bg-pink-100 py-10  px-8 translate-x-full transform transition-transform'>
+          <div ref={ref} className='sideCart  h-full w-72 overflow-y-scroll absolute top-0 right-0 bg-pink-100 py-10  px-8 translate-x-full transform transition-transform '>
             {(Object.keys(JSON.parse(JSON.stringify(cart))).length == 0) && <div>You have no items in the cart </div>}
             <h2 className="font-bol text-2xl font-bold text-center">Shopping Cart</h2>
             <span onClick={handleSideCart} className='absolute top-5 right-2 cursor-pointer text-2xl text-pink-500 '><AiFillCloseCircle/></span>
