@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
@@ -12,6 +12,13 @@ const Login = () => {
   const [password, setPassword] = useState()
 
   let router = useRouter();
+
+  useEffect(()=>{
+    if(localStorage.getItem('token')){
+      
+      router.push('/')
+    }
+  },[])
 
   const handleSubmit = async (e) => {
     e.preventDefault()

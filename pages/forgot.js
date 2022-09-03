@@ -1,7 +1,18 @@
 import React from 'react'
 import Link from 'next/link'
+import {useRouter} from 'next/router';
+import { useEffect } from 'react';
 
-const forgot = () => {
+
+const Forgot = () => {
+  let router = useRouter();
+  
+  useEffect(()=>{
+    if(localStorage.getItem('token')){
+      
+      router.push('/')
+    }
+  },[])
   return (
     <div>
       <section className="h-screen">
@@ -58,4 +69,4 @@ const forgot = () => {
   )
 }
 
-export default forgot
+export default Forgot
