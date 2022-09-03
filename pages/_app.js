@@ -17,7 +17,6 @@ function MyApp({ Component, pageProps }) {
     //  const [user,setUser] =useState({value:null})
      const [user,setUser] =useState({})
      const [key,setKey] =useState()
-     const [dropDown,setDropDown] =useState(false)
 
 
 
@@ -99,7 +98,7 @@ function MyApp({ Component, pageProps }) {
     saveCart(newCart)
     setCart(newCart)
 
-    router.push('http://localhost:3000/checkout')
+    router.push(`${process.env.NEXT_PUBLIC_HOST}/checkout`)
   }
       
   const removeFromCart = (productCode,qty,name,price,size,variant)=>{

@@ -56,7 +56,7 @@ const Tshirts = ({ products }) => {
 export async function getServerSideProps(context) {
 
   if (!mongoose.connections[0].readyState) {
-    await mongoose.connect("mongodb://localhost:27017/codeswear?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false")
+    await mongoose.connect(process.env.MONGO_DB)
 
   }
   const products = await Product.find({ category: "tshirts" })

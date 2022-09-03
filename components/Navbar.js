@@ -11,7 +11,7 @@ import { MdAccountCircle } from 'react-icons/md';
 
 
 const Navbar = ({addToCart, removeFromCart, cart, totalamount, clearCart, user, logout}) => {
-  console.log(user)
+  // console.log(user)
 
   
   const [dropDown,setDropDown] =useState(false)
@@ -53,7 +53,7 @@ const Navbar = ({addToCart, removeFromCart, cart, totalamount, clearCart, user, 
         </div>
           <div className="cart flex text-2xl cursor-pointer absolute top-1 right-1 md:right-3 md:top-3 md:text-4xl">
 
-          <a onMouseOver={()=>{setDropDown(true)}} onMouseLeave={()=>{setDropDown(false)}}>
+          <span onMouseOver={()=>{setDropDown(true)}} onMouseLeave={()=>{setDropDown(false)}}>
             {dropDown && <div onMouseOver={()=>{setDropDown(true)}} onMouseLeave={()=>{setDropDown(false)}} className='absolute right-14 bg-gray-100 border top-9 py-4 rounded-md px-5 w-32 text-black'>
               <ul>
                 <Link href={'/myaccount'}><a><li className='py-1 hover:text-pink-700 text-sm'>My Account</li></a></Link>
@@ -62,7 +62,7 @@ const Navbar = ({addToCart, removeFromCart, cart, totalamount, clearCart, user, 
               </ul>
             </div>}
             {user.value && <MdAccountCircle/>}
-          </a>
+          </span>
 
           {!user.value &&  <Link href={"/login"}><a><button className='bg-pink-600 px-2 py-1 rounded-md text-white text-sm'>logedIn</button></a></Link>}
 

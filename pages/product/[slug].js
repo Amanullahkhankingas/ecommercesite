@@ -17,7 +17,7 @@ const Post = ({ buyNow, addToCart, product, variants }) => {
 
   const handlecheck = async () => {
 
-    const pins = await fetch('http://localhost:3000/api/check')
+    const pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/check`)
     const pinsjson = await pins.json()
     if (pinsjson.includes(parseInt(pin))) {
       setAccessability(true)
@@ -56,7 +56,7 @@ const Post = ({ buyNow, addToCart, product, variants }) => {
   const [size, setSize] = useState(product.size)
 
   const refreshVariant = (newSize, newColor) => {
-    let url = `http://localhost:3000/product/${variants[newColor][newSize]["slug"]}`
+    let url = `${process.env.NEXT_PUBLIC_HOST}/product/${variants[newColor][newSize]["slug"]}`
     window.location = url
     // http://localhost:3000/product/wear-the-codea
 
@@ -177,7 +177,7 @@ const Post = ({ buyNow, addToCart, product, variants }) => {
 export async function getServerSideProps(context) {
 
   if (!mongoose.connections[0].readyState) {
-    await mongoose.connect("mongodb://localhost:27017/codeswear?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false")
+    await mongoose.connect(process.env.MONGO_DB)
   }
 
   const product = await Product.findOne({ slug: context.query.slug })

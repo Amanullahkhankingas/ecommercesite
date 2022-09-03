@@ -17,16 +17,16 @@ const Signup = () => {
       router.push('/')
     }
   },[])
-  const [name, setName] = useState()
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   
   const handleSubmit =async (e)=>{
     e.preventDefault()
     
     let data = {name, email, password}
     
-    let response = await fetch('http://localhost:3000/api/signup',{
+    let response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`,{
       method:'POST',
       headers:{
         'Content-Type':'application/json',
@@ -49,6 +49,10 @@ const Signup = () => {
       draggable: true,
       progress: undefined,
     });
+
+    setTimeout(() => {
+      router.push(`${process.env.NEXT_PUBLIC_HOST}`)
+    }, 1000);
   }
 
   const handleChange =(e)=>{
